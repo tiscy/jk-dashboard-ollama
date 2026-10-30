@@ -1,7 +1,9 @@
 services:
   dashboard:
     build: .
-    network_mode: host
+    container_name: ollama-dashboard
+    ports:
+      - "3100:3000"
     environment:
-      - NUXT_OLLAMA_HOST=http://localhost:11434
+      - NUXT_OLLAMA_HOST=${NUXT_OLLAMA_HOST:-http://192.168.1.50:11434}
     restart: unless-stopped
